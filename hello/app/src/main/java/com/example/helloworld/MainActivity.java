@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
-    private Button button,button1,button2,button3;
+    private Button button,button1,button2,button3, buttonXHTC, buttonSSTC;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +42,20 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        buttonXHTC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, BieuDoXuHuongTaiChinh.class);
+                startActivity(intent);
+            }
+        });
+        buttonSSTC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, BieuDoSoSanhThuChi.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void initView(){
@@ -49,5 +63,7 @@ public class MainActivity extends AppCompatActivity {
         button1 = findViewById(R.id.button1);
         button2 = findViewById(R.id.button2);
         button3 = findViewById(R.id.button3);
+        buttonXHTC = findViewById(R.id.button_xhtc);
+        buttonSSTC = findViewById(R.id.button_sstc);
     }
 }
