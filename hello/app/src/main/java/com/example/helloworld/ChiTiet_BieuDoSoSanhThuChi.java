@@ -36,7 +36,12 @@ public class ChiTiet_BieuDoSoSanhThuChi extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chi_tiet_bieu_do_so_sanh_thu_chi);
         initView();
+        handleBarChartSSTC();
 
+        handleEvent();
+    }
+
+    private void handleBarChartSSTC() {
         // Dummy data for the bar chart (three groups of bars)
         ArrayList<BarEntry> group1 = new ArrayList<>();
         group1.add(new BarEntry(1, 100));
@@ -109,8 +114,6 @@ public class ChiTiet_BieuDoSoSanhThuChi extends AppCompatActivity {
 
         adapter = new MucBieuDoSSTCAdapter(this, barChartItems);
         describeBarChartSSTC.setAdapter(adapter);
-
-        handleEvent();
     }
 
     private void handleEvent() {
