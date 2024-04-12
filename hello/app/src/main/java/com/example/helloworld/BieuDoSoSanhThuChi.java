@@ -10,6 +10,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,6 +22,7 @@ public class BieuDoSoSanhThuChi extends AppCompatActivity {
     TextView editTextDateSSTC1, editTextDateSSTC2;
     private ImageView back,home;
     private Button buttonSSTC1;
+    private String yearStart, monthStart, dayStart, yearEnd, monthEnd, dayEnd;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,8 +50,19 @@ public class BieuDoSoSanhThuChi extends AppCompatActivity {
         buttonSSTC1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(BieuDoSoSanhThuChi.this, ChiTiet_BieuDoSoSanhThuChi.class);
-                startActivity(intent);
+                if(yearStart != null && yearEnd != null) {
+                    Intent intent = new Intent(BieuDoSoSanhThuChi.this, ChiTiet_BieuDoSoSanhThuChi.class);
+                    startActivity(intent);
+                    intent.putExtra("yearStart", yearStart);
+                    intent.putExtra("monthStart", monthStart);
+                    intent.putExtra("dayStart", dayStart);
+                    intent.putExtra("yearEnd", yearEnd);
+                    intent.putExtra("monthEnd", monthEnd);
+                    intent.putExtra("dayEnd", dayEnd);
+                    startActivity(intent);
+                }else {
+                    Toast.makeText(getApplicationContext(), "Vui lòng chọn thời gian!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
@@ -58,6 +71,9 @@ public class BieuDoSoSanhThuChi extends AppCompatActivity {
         DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                yearStart = year + "";
+                monthStart = monthOfYear + "";
+                dayStart = dayOfMonth + "";
                 String selectedDate = String.format("%d-%02d-%02d", year, monthOfYear + 1, dayOfMonth);
                 editTextDateSSTC1.setText(selectedDate);
             }
@@ -73,6 +89,9 @@ public class BieuDoSoSanhThuChi extends AppCompatActivity {
         DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                yearEnd = year + "";
+                monthEnd = monthOfYear + "";
+                dayEnd = dayOfMonth + "";
                 String selectedDate = String.format("%d-%02d-%02d", year, monthOfYear + 1, dayOfMonth);
                 editTextDateSSTC2.setText(selectedDate);
             }

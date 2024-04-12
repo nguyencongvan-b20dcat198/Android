@@ -15,18 +15,18 @@
         app:layout_constraintGuide_percent="0.2" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline24"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.55" />
-
-    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline26"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.65" />
+        app:layout_constraintGuide_percent="0.63" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.74" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline27"
@@ -40,7 +40,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.95" />
+        app:layout_constraintGuide_percent="0.95883775" />
 
     <FrameLayout
         android:id="@+id/frameLayout"
@@ -94,10 +94,11 @@
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="369dp"
-        android:layout_height="252dp"
+        android:layout_height="313dp"
         android:layout_marginStart="6dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="6dp"
+        android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -106,56 +107,70 @@
         <com.github.mikephil.charting.charts.BarChart
             android:id="@+id/bar_chart_sstc"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="275dp" />
+
+        <TextView
+            android:id="@+id/text_view_time_ctsstc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="4 / 2024"
+            android:textSize="20dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="370dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="23dp"
+        android:layout_marginEnd="23dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+        <Button
+            android:id="@+id/btn_year_ctsstc"
+            android:layout_width="92dp"
+            android:layout_height="50dp"
+            android:text="Năm"
+            tools:layout_editor_absoluteX="23dp"
+            tools:layout_editor_absoluteY="416dp" />
+
+        <Button
+            android:id="@+id/btn_month_ctsstc"
+            android:layout_width="92dp"
+            android:layout_height="50dp"
+            android:text="Tháng"
+            tools:layout_editor_absoluteX="115dp"
+            tools:layout_editor_absoluteY="416dp" />
+
+        <Button
+            android:id="@+id/btn_week_ctsstc"
+            android:layout_width="92dp"
+            android:layout_height="50dp"
+            android:text="Tuần"
+            tools:layout_editor_absoluteX="207dp"
+            tools:layout_editor_absoluteY="416dp" />
+
+        <Button
+            android:id="@+id/btn_day_ctsstc"
+            android:layout_width="92dp"
+            android:layout_height="50dp"
+            android:text="Ngày"
+            tools:layout_editor_absoluteX="308dp"
+            tools:layout_editor_absoluteY="416dp" />
     </LinearLayout>
 
     <ListView
         android:id="@+id/describe_bar_chart_sstc"
-        android:layout_width="364dp"
-        android:layout_height="237dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="374dp"
+        android:layout_height="173dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.475"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button5" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
-    <Button
-        android:id="@+id/button5"
-        android:layout_width="92dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="14dp"
-        android:text="Ngày"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
-
-    <Button
-        android:id="@+id/button6"
-        android:layout_width="92dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
-        android:text="Tuần"
-        app:layout_constraintStart_toEndOf="@+id/button5"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
-
-    <Button
-        android:id="@+id/button7"
-        android:layout_width="92dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
-        android:text="Tháng"
-        app:layout_constraintStart_toEndOf="@+id/button6"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
-
-    <Button
-        android:id="@+id/button8"
-        android:layout_width="92dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
-        android:layout_marginEnd="18dp"
-        android:text="Năm"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button7"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 </androidx.constraintlayout.widget.ConstraintLayout>

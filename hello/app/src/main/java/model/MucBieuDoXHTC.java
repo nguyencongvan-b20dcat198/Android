@@ -2,14 +2,16 @@ package model;
 
 public class MucBieuDoXHTC {
     private String lable;
-    private double percent, totalAmount;
+    private float percent, totalAmount;
     private int color;
+    private boolean selected = false;
 
-    public MucBieuDoXHTC(String lable, double percent, double totalAmount, int color) {
+    public MucBieuDoXHTC(String lable, float percent, float totalAmount, int color, boolean selected) {
         this.lable = lable;
         this.percent = percent;
         this.totalAmount = totalAmount;
         this.color = color;
+        this.selected = selected;
     }
 
     public String getLable() {
@@ -20,19 +22,19 @@ public class MucBieuDoXHTC {
         this.lable = lable;
     }
 
-    public double getPercent() {
+    public float getPercent() {
         return percent;
     }
 
-    public void setPercent(double percent) {
+    public void setPercent(float percent) {
         this.percent = percent;
     }
 
-    public double getTotalAmount() {
+    public float getTotalAmount() {
         return totalAmount;
     }
 
-    public void setTotalAmount(double totalAmount) {
+    public void setTotalAmount(float totalAmount) {
         this.totalAmount = totalAmount;
     }
 
@@ -42,5 +44,13 @@ public class MucBieuDoXHTC {
 
     public void setColor(int color) {
         this.color = color;
+    }
+
+    public boolean isSelected() {
+        return selected;
+    }
+
+    public void setSelected(boolean selected) {
+        this.selected = selected;
     }
 }

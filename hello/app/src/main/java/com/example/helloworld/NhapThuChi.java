@@ -95,7 +95,7 @@ public class NhapThuChi extends AppCompatActivity implements NhapThuChiAdapter.N
         });
 
         loaiGDS = db.getAllLoaiGD();
-        idLoaiGd = loaiGDS.get(0);
+        idLoaiGd = loaiGDS.get(1);
         nhapThuChiAdapter = new NhapThuChiAdapter(this,loaiGDS);
         nhapThuChiAdapter.setNhapThuChiListener(this);
         recyclerView.setAdapter(nhapThuChiAdapter);

@@ -2,13 +2,16 @@ package model;
 
 public class MucBieuDoSSTC {
     private String time;
-    private double income, expense, residual;
+    private float income, expense, profit, loss;
+    private boolean selected = false;
 
-    public MucBieuDoSSTC(String time, double income, double expense, double residual) {
+    public MucBieuDoSSTC(String time, float income, float expense, float profit, float loss, boolean selected) {
         this.time = time;
         this.income = income;
         this.expense = expense;
-        this.residual = residual;
+        this.profit = profit;
+        this.loss = loss;
+        this.selected = selected;
     }
 
     public String getTime() {
@@ -19,27 +22,43 @@ public class MucBieuDoSSTC {
         this.time = time;
     }
 
-    public double getIncome() {
+    public float getIncome() {
         return income;
     }
 
-    public void setIncome(double income) {
+    public void setIncome(float income) {
         this.income = income;
     }
 
-    public double getExpense() {
+    public float getExpense() {
         return expense;
     }
 
-    public void setExpense(double expense) {
+    public void setExpense(float expense) {
         this.expense = expense;
     }
 
-    public double getResidual() {
-        return residual;
+    public float getProfit() {
+        return profit;
     }
 
-    public void setResidual(double residual) {
-        this.residual = residual;
+    public void setProfit(float profit) {
+        this.profit = profit;
+    }
+
+    public float getLoss() {
+        return loss;
+    }
+
+    public void setLoss(float loss) {
+        this.loss = loss;
+    }
+
+    public boolean isSelected() {
+        return selected;
+    }
+
+    public void setSelected(boolean selected) {
+        this.selected = selected;
     }
 }
