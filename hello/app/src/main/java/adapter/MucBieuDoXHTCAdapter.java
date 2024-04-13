@@ -57,7 +57,7 @@ public class MucBieuDoXHTCAdapter extends ArrayAdapter<MucBieuDoXHTC> {
 
         pieChartItemLable.setText(m.getLable());
         pieChartItemPercent.setText(String.format("%.2f", m.getPercent()) + " %");
-        pieChartItemTotalAmount.setText(String.format("%.2f", m.getTotalAmount()) + " đồng");
+        pieChartItemTotalAmount.setText(String.format("%.2f", m.getTotalAmount()) + " đ");
         pieChartItemLable.setTextColor(m.getColor());
         pieChartItemPercent.setTextColor(m.getColor());
         pieChartItemTotalAmount.setTextColor(m.getColor());

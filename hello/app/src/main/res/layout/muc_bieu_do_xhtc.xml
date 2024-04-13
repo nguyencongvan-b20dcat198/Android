@@ -44,8 +44,8 @@
                 android:layout_width="192dp"
                 android:layout_height="match_parent"
                 android:gravity="center"
+                android:text="1000000 đ"
                 android:textAlignment="textStart"
-                android:text="1000000 vnđ"
                 android:textSize="18dp"
                 tools:ignore="RtlCompat" />
         </LinearLayout>

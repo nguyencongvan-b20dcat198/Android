@@ -57,10 +57,10 @@ public class MucBieuDoSSTCAdapter extends ArrayAdapter<MucBieuDoSSTC> {
         }
 
         barChartItemTime.setText(m.getTime());
-        barChartItemIncome.setText("Thu nhập: " + String.format("%.2f",m.getIncome()) + " đồng");
-        barChartItemExpense.setText("Chi phí: " + String.format("%.2f",m.getExpense()) + " đồng");
-        barChartItemProfit.setText("Lợi nhuận: " + String.format("%.2f",m.getProfit()) + " đồng");
-        barChartItemLoss.setText("Lỗ: " + String.format("%.2f",m.getLoss()) + " đồng");
+        barChartItemIncome.setText("Thu nhập: " + String.format("%.2f",m.getIncome()) + " đ");
+        barChartItemExpense.setText("Chi phí: " + String.format("%.2f",m.getExpense()) + " đ");
+        barChartItemProfit.setText("Lợi nhuận: " + String.format("%.2f",m.getProfit()) + " đ");
+        barChartItemLoss.setText("Lỗ: " + String.format("%.2f",m.getLoss()) + " đ");
 
         return view;
     }

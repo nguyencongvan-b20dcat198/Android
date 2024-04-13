@@ -72,17 +72,15 @@ public class ChiTiet_BieuDoSoSanhThuChi extends AppCompatActivity {
 
         textViewTimeCTSSTC.setText(dayStart + "/" + (Integer.parseInt(monthStart) + 1) + "/" + yearStart + " - " + dayEnd + "/" + (Integer.parseInt(monthEnd) + 1) + "/" + yearEnd);
 
-        Calendar timeStart = Calendar.getInstance(Locale.US);
+        Calendar timeStart = Calendar.getInstance();
         timeStart.set(Calendar.YEAR, Integer.parseInt(yearStart));
         timeStart.set(Calendar.MONTH, Integer.parseInt(monthStart)); // Lưu ý: Tháng trong Calendar bắt đầu từ 0
         timeStart.set(Calendar.DAY_OF_MONTH, Integer.parseInt(dayStart));
-        Date dateStart = timeStart.getTime();
 
-        Calendar timeEnd = Calendar.getInstance(Locale.US);
+        Calendar timeEnd = Calendar.getInstance();
         timeEnd.set(Calendar.YEAR, Integer.parseInt(yearEnd));
         timeEnd.set(Calendar.MONTH, Integer.parseInt(monthEnd)); // Lưu ý: Tháng trong Calendar bắt đầu từ 0
         timeEnd.set(Calendar.DAY_OF_MONTH, Integer.parseInt(dayEnd));
-        Date dateEnd = timeEnd.getTime();
 
         // Dummy data for the bar chart (three groups of bars)
         ArrayList<BarEntry> group1 = new ArrayList<>();
@@ -137,7 +135,7 @@ public class ChiTiet_BieuDoSoSanhThuChi extends AppCompatActivity {
 
         for(int i = 0 ; i < listgd.size(); i++) {
             Date date = listgd.get(i).getDate();
-            Calendar c = Calendar.getInstance(Locale.US);
+            Calendar c = Calendar.getInstance();
             c.setTime(date);
             String y = c.get(Calendar.YEAR) + "";
             String m = c.get(Calendar.MONTH) + 1 + "";
@@ -175,24 +173,14 @@ public class ChiTiet_BieuDoSoSanhThuChi extends AppCompatActivity {
             if(time.isEmpty())
                 break;
 
-            if(cmp(date, dateStart) >= 0 && cmp(date, dateEnd) <= 0) {
+            if(cmp(c, timeStart) >= 0 && cmp(c, timeEnd) <= 0) {
                 if (listTime.contains(time)) {
                     int index = listTime.indexOf(time);
-                    float value1 = listgd.get(index).getSotien();
-                    float income1 = 0, expense1 = 0, profit1 = 0, loss1 = 0;
-
-                    if(listgd.get(index).getKieugd() == 1) {
-                        expense1 += value1;
-                    }else if(listgd.get(index).getKieugd() == 2) {
-                        income1 += value1;
-                    }
-                    if(income1 > expense1) {
-                        profit1 += income1 - expense1;
-                    }else if(income1 < expense1) {
-                        loss1 += expense1 - income1;
-                    }
+                    float income1 = barChartItems.get(index).getIncome();
+                    float expense1 = barChartItems.get(index).getExpense();
+                    float profit1 = barChartItems.get(index).getProfit();
+                    float loss1 = barChartItems.get(index).getLoss();
                     barChartItems.set(index, new MucBieuDoSSTC(time, income1 + income, expense1 + expense, profit1 + profit, loss1 + loss, false));
-
                 } else {
                     listTime.add(time);
                     barChartItems.add(new MucBieuDoSSTC(time, income, expense, profit, loss, false));
@@ -266,15 +254,27 @@ public class ChiTiet_BieuDoSoSanhThuChi extends AppCompatActivity {
         barChartSSTC.invalidate();
 
         // Hiển thị mô tả biểu đồ so sánh thu nhập
-        ArrayList<MucBieuDoSSTC> barChartItems1 = barChartItems;
-        Collections.reverse(barChartItems1);
-        barChartItems1.get(p).setSelected(true);
-        MucBieuDoSSTCAdapter adapter = new MucBieuDoSSTCAdapter(this, barChartItems1);
-        describeBarChartSSTC.setAdapter(adapter);
+        if(!barChartItems.isEmpty()) {
+            ArrayList<MucBieuDoSSTC> barChartItems1 = barChartItems;
+            Collections.reverse(barChartItems1);
+            barChartItems1.get(p).setSelected(true);
+            MucBieuDoSSTCAdapter adapter = new MucBieuDoSSTCAdapter(this, barChartItems1);
+            describeBarChartSSTC.setAdapter(adapter);
+        }
     }
 
-    private long cmp(Date date1, Date date2) {
-        return date1.compareTo(date2);
+    private long cmp(Calendar c1, Calendar c2) {
+        // Thiết lập giờ, phút, giây và mili giây cho c1
+        c1.set(Calendar.HOUR_OF_DAY, 0);
+        c1.set(Calendar.MINUTE, 0);
+        c1.set(Calendar.SECOND, 0);
+        c1.set(Calendar.MILLISECOND, 0);
+        // Thiết lập giờ, phút, giây và mili giây cho cal1
+        c2.set(Calendar.HOUR_OF_DAY, 0);
+        c2.set(Calendar.MINUTE, 0);
+        c2.set(Calendar.SECOND, 0);
+        c2.set(Calendar.MILLISECOND, 0);
+        return c1.compareTo(c2);
     }
 
     private void handleEvent() {

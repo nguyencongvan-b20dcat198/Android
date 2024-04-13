@@ -11,11 +11,12 @@
 
     <TextView
         android:id="@+id/bar_chart_item_time_sstc"
-        android:layout_width="157dp"
+        android:layout_width="172dp"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:textAlignment="textStart"
+        android:paddingLeft="10dp"
         android:text="20/03/2024"
+        android:textAlignment="textStart"
         android:textSize="20dp"
         tools:ignore="RtlCompat" />
 
@@ -28,41 +29,41 @@
             android:id="@+id/bar_chart_item_income_sstc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="1000000 vnđ"
-            android:textAlignment="textStart"
-            android:textSize="18dp"
             android:layout_marginRight="10dp"
-            android:textColor="@color/green"/>
+            android:text="1000000 đ"
+            android:textAlignment="textStart"
+            android:textColor="@color/green"
+            android:textSize="18dp" />
 
         <TextView
             android:id="@+id/bar_chart_item_expense_sstc"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="200000 vnđ"
-            android:textAlignment="textStart"
-            android:textSize="18dp"
             android:layout_marginRight="10dp"
-            android:textColor="@color/orange"/>
+            android:text="200000 đ"
+            android:textAlignment="textStart"
+            android:textColor="@color/orange"
+            android:textSize="18dp" />
 
         <TextView
             android:id="@+id/bar_chart_item_profit_sstc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="100000 vnđ"
-            android:textAlignment="textStart"
-            android:textSize="18dp"
             android:layout_marginRight="10dp"
-            android:textColor="@color/blue"/>
+            android:text="100000 đ"
+            android:textAlignment="textStart"
+            android:textColor="@color/blue"
+            android:textSize="18dp" />
 
         <TextView
             android:id="@+id/bar_chart_item_loss_sstc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="350000 vnđ"
-            android:textAlignment="textStart"
-            android:textSize="18dp"
             android:layout_marginRight="10dp"
-            android:textColor="@color/red"/>
+            android:text="350000 đ"
+            android:textAlignment="textStart"
+            android:textColor="@color/red"
+            android:textSize="18dp" />
     </LinearLayout>
 
 </LinearLayout>

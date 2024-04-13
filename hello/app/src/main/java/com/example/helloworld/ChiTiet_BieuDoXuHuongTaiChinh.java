@@ -54,7 +54,6 @@ public class ChiTiet_BieuDoXuHuongTaiChinh extends AppCompatActivity {
     private List<String> listLoaiGiaoDichRa = new ArrayList<>();
     private List<String> listLoaiGiaoDichVao = new ArrayList<>();
     private ArrayList<MucBieuDoXHTC> pieChartItems = new ArrayList<>();
-    private int p = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -225,7 +224,6 @@ public class ChiTiet_BieuDoXuHuongTaiChinh extends AppCompatActivity {
                         ColorStateList.valueOf(ContextCompat.getColor(getApplicationContext(),
                                 R.color.bg_button_on)));
                 checkCPTN=2;
-                p = 0;
                 handlePieChartXHTC();
                 pieChartXHTC.highlightValue(null);
             }
@@ -235,8 +233,15 @@ public class ChiTiet_BieuDoXuHuongTaiChinh extends AppCompatActivity {
             @Override
             public void onValueSelected(Entry entry, Highlight highlight) {
                 // Xử lý sự kiện khi click vào khối
-//                PieEntry pieEntry = (PieEntry) entry;
-//                int p = pieEntries.indexOf(entry);
+                PieEntry pieEntry = (PieEntry) entry;
+                int position = pieEntries.indexOf(entry);
+                for (MucBieuDoXHTC pieChartItem: pieChartItems) {
+                    pieChartItem.setSelected(false);
+                }
+                pieChartItems.get(position).setSelected(true);
+                MucBieuDoXHTCAdapter adapter = new MucBieuDoXHTCAdapter(getApplicationContext(), pieChartItems);
+                describePieChartXHTC.setAdapter(adapter);
+                describePieChartXHTC.setSelectionFromTop(position, 0);
             }
 
             @Override
@@ -253,13 +258,14 @@ public class ChiTiet_BieuDoXuHuongTaiChinh extends AppCompatActivity {
         describePieChartXHTC.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                pieChartItems.get(p).setSelected(false);
+                for (MucBieuDoXHTC pieChartItem: pieChartItems) {
+                    pieChartItem.setSelected(false);
+                }
                 pieChartItems.get(position).setSelected(true);
                 MucBieuDoXHTCAdapter adapter = new MucBieuDoXHTCAdapter(getApplicationContext(), pieChartItems);
                 describePieChartXHTC.setAdapter(adapter);
                 describePieChartXHTC.setSelectionFromTop(position, view.getTop());
-                p = position;
-                pieChartXHTC.highlightValue(position, 0);
+                pieChartXHTC.highlightValue(position, 0, false);
             }
         });
 
